@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UHB X SIM DATABASE</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    #responseBox {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 500px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>UHB X SIM DATABASE</h1>
+  <input type="text" id="number" placeholder="Enter phone number" />
+  <button id="fetchData">Search</button>
+  <div id="responseBox"></div>
+
+  <script>
+    document.getElementById("fetchData").addEventListener("click", async () => {
+      const number = document.getElementById("number").value.trim();
+      const responseBox = document.getElementById("responseBox");
+      responseBox.innerHTML = '';
+
+      if (!number) {
+        alert("Please enter a number.");
+        return;
+      }
+
+      responseBox.innerHTML = '<p>Fetching data...</p>';
+
+      const apiUrl = `https://corsproxy.io/?https://famofcfallxd.serv00.net/apis/newsimdata.php?num=${number}`;
+
+      try {
+        const response = await fetch(apiUrl);
+        const result = await response.json();
+        console.log("API Result:", result);
+
+        if (result && result.data && result.data.length > 0) {
+          const user = result.data[0];
+          const html = `
+            <p><strong>🔹 Name:</strong> ${user.name || "N/A"}</p>
+            <p><strong>🔹 Mobile:</strong> ${user.mobile || "N/A"}</p>
+            <p><strong>🔹 CNIC:</strong> ${user.cnic || "N/A"}</p>
+            <p><strong>🔹 Address:</strong> ${user.address || "N/A"}</p>
+          `;
+          responseBox.innerHTML = html;
+        } else {
+          responseBox.innerHTML = '<p>❌ No data found.</p>';
+        }
+      } catch (error) {
+        responseBox.innerHTML = `<p>❌ API Error: ${error.message}</p>`;
+      }
+    });
+  </script>
+</body>
+</html>
