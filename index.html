@@ -8,12 +8,14 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #000;
+      background: url('images (1).jpeg') no-repeat center center fixed;
+      background-size: cover;
       color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 40px;
+      min-height: 100vh;
     }
     input, button {
       padding: 10px;
@@ -22,20 +24,45 @@
       font-size: 16px;
     }
     #responseBox {
-      background: rgba(255,255,255,0.1);
+      background: rgba(0,0,0,0.6);
       padding: 20px;
       border-radius: 10px;
       width: 100%;
       max-width: 500px;
       margin-top: 20px;
     }
+    header {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      font-size: 32px;
+      text-shadow: 0 0 10px #00fff7;
+    }
   </style>
 </head>
 <body>
-  <h1>UHB X SIM DATABASE</h1>
+  <header>
+    <h1>UHB X SIM DATABASE</h1>
+  </header>
   <input type="text" id="number" placeholder="Enter phone number" />
   <button id="fetchData">Search</button>
   <div id="responseBox"></div>
+
+  <!-- WhatsApp Number Button -->
+  <a href="https://wa.me/923348734337" target="_blank">
+    <button style="background-color:#25D366; color:white; margin-top:15px; padding:10px 20px; border:none; border-radius:5px;">
+      Chat on WhatsApp
+    </button>
+  </a>
+
+  <!-- WhatsApp Channel Button -->
+  <a href="https://whatsapp.com/channel/0029VaskVOHBqbr0Rzvg1Z2b" target="_blank">
+    <button style="background-color:#128C7E; color:white; margin-top:10px; padding:10px 20px; border:none; border-radius:5px;">
+      Join WhatsApp Channel
+    </button>
+  </a>
 
   <script>
     document.getElementById("fetchData").addEventListener("click", async () => {
