@@ -8,14 +8,12 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: url('images (1).jpeg') no-repeat center center fixed;
-      background-size: cover;
+      background: #000;
       color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 40px;
-      min-height: 100vh;
     }
     input, button {
       padding: 10px;
@@ -24,30 +22,23 @@
       font-size: 16px;
     }
     #responseBox {
-      background: rgba(0,0,0,0.6);
+      background: rgba(255,255,255,0.1);
       padding: 20px;
       border-radius: 10px;
       width: 100%;
       max-width: 500px;
       margin-top: 20px;
     }
-    header {
-      width: 100%;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    header h1 {
-      font-size: 32px;
-      text-shadow: 0 0 10px #00fff7;
-    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>UHB X SIM DATABASE</h1>
-  </header>
-  <input type="text" id="number" placeholder="Enter phone number or Cnic" />
-  <button id="fetchData">Search 🔍</button>
+  
+    <header style="width: 100%; text-align: center; margin-bottom: 20px;">
+      <h1 style="font-size: 32px; text-shadow: 0 0 10px #00fff7;">UHB X SIM DATABASE</h1>
+    </header>
+    
+  <input type="text" id="number" placeholder="Enter phone number" />
+  <button id="fetchData">Search</button>
   <div id="responseBox"></div>
 
   <!-- WhatsApp Number Button -->
@@ -94,7 +85,7 @@
           `;
           responseBox.innerHTML = html;
         } else {
-          responseBox.innerHTML = '<p>❌ No data found.Contact On Whatsapp Number and also join Whatsapp Channel.bohat he km rate pr data hasil krain.</p>';
+          responseBox.innerHTML = '<p>❌ No data found.</p>';
         }
       } catch (error) {
         responseBox.innerHTML = `<p>❌ API Error: ${error.message}</p>`;
